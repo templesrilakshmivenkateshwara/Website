@@ -32,7 +32,7 @@ export function Navigation() {
           {/* Logo */}
           <a href={sitePath(`${prefix || '/'}`)} className="flex items-center space-x-3">
             <Image
-              src="/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png"
+              src={sitePath("/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png")}
               alt="Temple Logo"
               width={40}
               height={40}

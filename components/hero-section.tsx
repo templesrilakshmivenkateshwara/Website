@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { MandalaBackground } from "./mandala-background"
+import { sitePath } from "@/lib/utils"
 
 export function HeroSection() {
   return (
@@ -14,7 +15,7 @@ export function HeroSection() {
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mb-8">
           <Image
-            src="/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png"
+            src={sitePath("/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png")}
             alt="Temple Logo"
             width={96}
             height={96}

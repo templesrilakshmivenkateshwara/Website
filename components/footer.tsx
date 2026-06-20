@@ -10,7 +10,7 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <Image
-                src="/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png"
+                src={sitePath("/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png")}
                 alt="Temple Logo"
                 width={40}
                 height={40}
