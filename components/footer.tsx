@@ -1,4 +1,5 @@
 import { Heart } from "lucide-react"
+import Image from "next/image"
 import { sitePath } from "@/lib/utils"
 
 export function Footer() {
@@ -8,10 +9,12 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <img
-                src={sitePath("/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png")}
+              <Image
+                src="/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png"
                 alt="Temple Logo"
-                className="h-10 w-auto"
+                width={40}
+                height={40}
+                className="h-10 w-10 rounded-full object-cover"
               />
               <span className="font-bold text-xl text-foreground">Sri Lakshmi Venkateshwara Swamy Temple</span>
             </div>

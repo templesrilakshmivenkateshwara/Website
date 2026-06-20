@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { usePathname } from "next/navigation"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { LanguageSwitch } from "@/components/language-switch"
@@ -30,10 +31,12 @@ export function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <a href={sitePath(`${prefix || '/'}`)} className="flex items-center space-x-3">
-            <img
-              src={sitePath("/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png")}
+            <Image
+              src="/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png"
               alt="Temple Logo"
-              className="h-10 w-auto"
+              width={40}
+              height={40}
+              className="h-10 w-10 rounded-full object-cover"
             />
             <span className="font-bold text-xl text-foreground">Sri Lakshmi Venkateshwara Swamy Temple</span>
           </a>

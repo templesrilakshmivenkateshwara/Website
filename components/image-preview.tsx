@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Image from "next/image"
 import { Expand } from "lucide-react"
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
@@ -15,6 +16,7 @@ type ImagePreviewProps = {
   imageClassName?: string
   previewClassName?: string
   aspectClassName?: string
+  sizes?: string
 }
 
 export function ImagePreview({
@@ -26,6 +28,7 @@ export function ImagePreview({
   imageClassName,
   previewClassName,
   aspectClassName,
+  sizes,
 }: ImagePreviewProps) {
   const [open, setOpen] = useState(false)
   const [loaded, setLoaded] = useState(false)
@@ -53,16 +56,17 @@ export function ImagePreview({
             previewClassName,
           )}
         >
-          <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-xl">
-            <img
+          <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-xl">
+            <Image
               src={src}
               alt={alt}
-              loading="lazy"
-              decoding="async"
+              fill
+              sizes={sizes || "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"}
+              style={{ objectFit: "contain" }}
               onLoad={() => setLoaded(true)}
               onError={() => setLoaded(true)}
               className={cn(
-                "relative z-10 h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-[1.04]",
+                "relative z-10 transition-transform duration-300 ease-out group-hover:scale-[1.04]",
                 imageClassName,
               )}
             />
@@ -77,14 +81,17 @@ export function ImagePreview({
             <DialogTitle>{title || alt}</DialogTitle>
             {description ? <DialogDescription>{description}</DialogDescription> : null}
           </DialogHeader>
-          <div className="relative max-h-[80vh] overflow-hidden rounded-xl bg-muted/20 p-3 sm:p-4">
-            <img
+          <div className="relative h-[70vh] max-h-[80vh] overflow-hidden rounded-xl bg-muted/20 p-3 sm:p-4">
+            <Image
               src={src}
               alt={alt}
+              fill
+              sizes="100vw"
+              style={{ objectFit: "contain" }}
               onLoad={() => setLoaded(true)}
               onError={() => setLoaded(true)}
               className={cn(
-                "relative z-10 h-full max-h-[76vh] w-full object-contain",
+                "relative z-10",
               )}
             />
             {!loaded && <div className="absolute inset-0 animate-pulse bg-muted/40" aria-hidden="true" />}
