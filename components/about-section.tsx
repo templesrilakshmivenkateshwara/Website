@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card"
 import type { Locale } from "@/lib/i18n"
 import { getAbout } from "@/lib/content"
+import { ImagePreview } from "@/components/image-preview"
 
 export async function AboutSection({ lang = 'en' as Locale }: { lang?: Locale }) {
   const about = await getAbout(lang)
@@ -27,8 +28,13 @@ export async function AboutSection({ lang = 'en' as Locale }: { lang?: Locale })
               {sec.images.length > 0 && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {sec.images.slice(0, 4).map((src, i) => (
-                    <Card key={i} className="overflow-hidden">
-                      <img src={src} alt={sec.title} className="w-full h-64 object-cover rounded-lg" />
+                    <Card key={i} className="overflow-hidden py-0 gap-0">
+                      <ImagePreview
+                        src={src}
+                        alt={sec.title}
+                        title={sec.title}
+                        aspectClassName="aspect-[4/3]"
+                      />
                     </Card>
                   ))}
                 </div>

@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card"
 import type { Locale } from "@/lib/i18n"
 import { pickGalleryItems } from "@/lib/scraped"
+import { ImagePreview } from "@/components/image-preview"
 
 export function GallerySection({ lang = 'en' as Locale }: { lang?: Locale }) {
   const galleryImages = pickGalleryItems(lang)
@@ -23,26 +24,24 @@ export function GallerySection({ lang = 'en' as Locale }: { lang?: Locale }) {
           {galleryImages.map((image, index) => (
             <Card
               key={index}
-              className="overflow-hidden group cursor-pointer hover:shadow-md transition-all duration-300 border border-border h-full"
+              className="h-full overflow-hidden border border-border shadow-sm py-0 gap-0"
             >
-              <div className="relative overflow-hidden bg-transparent">
-                <div className="w-full aspect-[4/3] overflow-hidden">
-                  <img
-                    src={image.src || "/placeholder.svg"}
-                    alt={image.alt || image.title || 'Gallery image'}
-                    loading="lazy"
-                    decoding="async"
-                    fetchPriority="low"
-                    className="w-full h-full object-cover rounded-t-lg transition-transform duration-300 group-hover:scale-105"/>
-                </div>
+              <div className="p-4 pb-0">
+                <ImagePreview
+                  src={image.src || "/placeholder.svg"}
+                  alt={image.alt || image.title || "Gallery image"}
+                  title={image.title || image.alt}
+                  description={image.description}
+                  aspectClassName="aspect-[4/3]"
+                />
               </div>
               {(image.title || image.alt || image.description) && (
-                <div className="p-3">
+                <div className="p-4 pt-3">
                   {(image.title || image.alt) && (
-                    <h3 className="text-sm font-medium text-foreground truncate">{image.title || image.alt}</h3>
+                    <h3 className="text-sm font-medium text-foreground text-center">{image.title || image.alt}</h3>
                   )}
                   {image.description && (
-                    <p className="mt-1 text-xs text-muted-foreground">
+                    <p className="mt-1 text-xs text-muted-foreground text-center">
                       {image.description}
                     </p>
                   )}

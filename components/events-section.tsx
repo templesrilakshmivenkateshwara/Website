@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import type { Locale } from "@/lib/i18n"
 import { pickSevaItems } from "@/lib/scraped"
+import { ImagePreview } from "@/components/image-preview"
 
 export function EventsSection({ lang = 'en' as Locale }: { lang?: Locale }) {
   const events = pickSevaItems(lang)
@@ -16,26 +17,22 @@ export function EventsSection({ lang = 'en' as Locale }: { lang?: Locale }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {events.map((event, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
-              <div className="relative bg-muted/30">
-                <div className="w-full aspect-[4/3] overflow-hidden">
-                  <img
-                    src={event.image || "/placeholder.svg"}
-                    alt={event.title}
-                    loading="lazy"
-                    decoding="async"
-                    fetchPriority="low"
-                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                    className="w-full h-full object-cover rounded-t-lg"
-                  />
-                </div>
+            <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col py-0 gap-0">
+              <div className="p-4 pb-0">
+                <ImagePreview
+                  src={event.image || "/placeholder.svg"}
+                  alt={event.title}
+                  title={event.title}
+                  description={event.description}
+                  aspectClassName="aspect-[4/3]"
+                />
               </div>
-              <CardHeader className="text-center items-center">
+              <CardHeader className="text-center items-center pt-4">
                 <CardTitle className="text-xl text-foreground text-center min-h-[4.5rem] flex items-center justify-center">
                   {event.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4 flex flex-1 flex-col text-center">
+              <CardContent className="space-y-4 flex flex-1 flex-col text-center pb-6">
                 <p className="text-muted-foreground text-sm leading-relaxed flex-1">{event.description}</p>
 
                 <Button className="w-full mt-auto">Learn More</Button>
