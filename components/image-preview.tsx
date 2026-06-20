@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Expand } from "lucide-react"
 
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
@@ -28,6 +28,11 @@ export function ImagePreview({
   aspectClassName,
 }: ImagePreviewProps) {
   const [open, setOpen] = useState(false)
+  const [loaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    setLoaded(false)
+  }, [src])
 
   return (
     <>
@@ -43,19 +48,23 @@ export function ImagePreview({
       >
         <div
           className={cn(
-            "overflow-hidden rounded-xl bg-muted/30 p-3 sm:p-4",
+            "relative overflow-hidden rounded-xl bg-muted/30 p-3 sm:p-4",
             aspectClassName || "aspect-[4/3]",
             previewClassName,
           )}
         >
           <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-xl">
+            {!loaded && <div className="absolute inset-0 animate-pulse bg-muted/60" aria-hidden="true" />}
             <img
               src={src}
               alt={alt}
               loading="lazy"
               decoding="async"
+              onLoad={() => setLoaded(true)}
+              onError={() => setLoaded(true)}
               className={cn(
-                "h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-[1.04]",
+                "relative z-10 h-full w-full object-contain transition-all duration-300 ease-out group-hover:scale-[1.04]",
+                loaded ? "opacity-100" : "opacity-0",
                 imageClassName,
               )}
             />
@@ -69,11 +78,17 @@ export function ImagePreview({
             <DialogTitle>{title || alt}</DialogTitle>
             {description ? <DialogDescription>{description}</DialogDescription> : null}
           </DialogHeader>
-          <div className="max-h-[80vh] overflow-hidden rounded-xl bg-muted/20 p-3 sm:p-4">
+          <div className="relative max-h-[80vh] overflow-hidden rounded-xl bg-muted/20 p-3 sm:p-4">
+            {!loaded && <div className="absolute inset-0 animate-pulse bg-muted/40" aria-hidden="true" />}
             <img
               src={src}
               alt={alt}
-              className="h-full max-h-[76vh] w-full object-contain"
+              onLoad={() => setLoaded(true)}
+              onError={() => setLoaded(true)}
+              className={cn(
+                "relative z-10 h-full max-h-[76vh] w-full object-contain transition-opacity duration-300",
+                loaded ? "opacity-100" : "opacity-0",
+              )}
             />
           </div>
           {(title || description) && (

@@ -28,10 +28,10 @@ export function HeroSection() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button asChild size="lg" className="px-8 py-3 text-lg font-medium">
-            <Link href={sitePath("/contact")}>Visit Us Today</Link>
+            <Link href="/contact">Visit Us Today</Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="px-8 py-3 text-lg font-medium bg-transparent">
-            <Link href={sitePath("/events")}>View Events</Link>
+            <Link href="/events">View Events</Link>
           </Button>
         </div>
 
