@@ -1,17 +1,17 @@
 # Hindu Temple Website Template
 
-A beautiful, modern temple website template built with Next.js and designed with traditional Hindu aesthetics.
+A modern temple website built with Next.js and styled around traditional Hindu aesthetics.
 
 ## Features
 
-- 🕉️ Traditional Hindu design with saffron orange color palette
-- 📱 Fully responsive design
-- ⚡ Static site generation for fast loading
-- 🎨 Animated mandala backgrounds
-- 📧 Contact forms and donation sections
-- 📅 Events calendar
-- 🖼️ Image gallery
-- 🚀 GitHub Pages ready
+- Temple-inspired design with a saffron color palette
+- Fully responsive layout
+- Static site export for fast loading
+- Animated mandala backgrounds
+- Contact and donation sections
+- Events calendar
+- Image gallery
+- GitHub Pages deployment
 
 ## Tech Stack
 
@@ -22,19 +22,19 @@ A beautiful, modern temple website template built with Next.js and designed with
 
 ## Deployment to GitHub Pages
 
-1. Fork this repository
-2. Go to your repository Settings > Pages
-3. Set Source to "GitHub Actions"
-4. Push to main branch - the site will automatically deploy!
+1. Push to `main`
+2. Enable GitHub Pages in repository settings
+3. Set the source to GitHub Actions
+4. Let the workflow build and deploy the static export
 
-Your site will be available at: `https://yourusername.github.io/repository-name`
+Your site will be available at `https://yourusername.github.io/repository-name`
 
 ## Local Development
 
-\`\`\`bash
+```bash
 npm install
 npm run dev
-\`\`\`
+```
 
 Open [http://localhost:3000](http://localhost:3000) to view the site.
 
