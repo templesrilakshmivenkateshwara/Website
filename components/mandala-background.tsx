@@ -3,11 +3,15 @@ import { sitePath } from "@/lib/utils"
 export function MandalaBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      {/* Spinning mandala wheel on the right side (hidden on small screens to keep layout clean) */}
       <img
         src={sitePath("/images/mandala-wheel.png")}
         alt=""
-        className="hidden md:block absolute top-1/2 -translate-y-1/2 right-4 lg:right-10 w-48 h-48 lg:w-72 lg:h-72 opacity-30 animate-spin-slow select-none"
+        className="hidden md:block absolute top-6 left-4 lg:left-8 w-40 h-40 lg:w-56 lg:h-56 opacity-15 mix-blend-multiply animate-spin-slow select-none"
+      />
+      <img
+        src={sitePath("/images/mandala-wheel.png")}
+        alt=""
+        className="hidden md:block absolute bottom-6 right-4 lg:right-8 w-44 h-44 lg:w-64 lg:h-64 opacity-12 mix-blend-multiply animate-spin-reverse select-none"
       />
     </div>
   )

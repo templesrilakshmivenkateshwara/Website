@@ -16,9 +16,9 @@ export function EventsSection({ lang = 'en' as Locale }: { lang?: Locale }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {events.map((event, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
               <div className="relative bg-muted/30">
-                <div className="w-full aspect-[4/3]">
+                <div className="w-full aspect-[4/3] overflow-hidden">
                   <img
                     src={event.image || "/placeholder.svg"}
                     alt={event.title}
@@ -26,17 +26,19 @@ export function EventsSection({ lang = 'en' as Locale }: { lang?: Locale }) {
                     decoding="async"
                     fetchPriority="low"
                     sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover rounded-t-lg"
                   />
                 </div>
               </div>
-              <CardHeader>
-                <CardTitle className="text-xl text-foreground">{event.title}</CardTitle>
+              <CardHeader className="text-center items-center">
+                <CardTitle className="text-xl text-foreground text-center min-h-[4.5rem] flex items-center justify-center">
+                  {event.title}
+                </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground text-sm leading-relaxed">{event.description}</p>
+              <CardContent className="space-y-4 flex flex-1 flex-col text-center">
+                <p className="text-muted-foreground text-sm leading-relaxed flex-1">{event.description}</p>
 
-                <Button className="w-full mt-4">Learn More</Button>
+                <Button className="w-full mt-auto">Learn More</Button>
               </CardContent>
             </Card>
           ))}

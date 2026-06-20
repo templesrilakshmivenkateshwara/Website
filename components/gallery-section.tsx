@@ -23,17 +23,17 @@ export function GallerySection({ lang = 'en' as Locale }: { lang?: Locale }) {
           {galleryImages.map((image, index) => (
             <Card
               key={index}
-              className="overflow-hidden group cursor-pointer hover:shadow-md transition-all duration-300 border border-border"
+              className="overflow-hidden group cursor-pointer hover:shadow-md transition-all duration-300 border border-border h-full"
             >
               <div className="relative overflow-hidden bg-transparent">
-                <div className="w-full aspect-[4/3]">
+                <div className="w-full aspect-[4/3] overflow-hidden">
                   <img
                     src={image.src || "/placeholder.svg"}
                     alt={image.alt || image.title || 'Gallery image'}
                     loading="lazy"
                     decoding="async"
                     fetchPriority="low"
-                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"/>
+                    className="w-full h-full object-cover rounded-t-lg transition-transform duration-300 group-hover:scale-105"/>
                 </div>
               </div>
               {(image.title || image.alt || image.description) && (

@@ -13,14 +13,14 @@ export function HomeGalleryStrip({ lang = 'en' as Locale }: { lang?: Locale }) {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {images.map((img, i) => (
             <Card key={i} className="overflow-hidden bg-muted/30">
-              <div className="w-full aspect-square">
+              <div className="w-full aspect-square overflow-hidden">
                 <img
                   src={img.src || '/placeholder.svg'}
                   alt={img.alt || img.title || 'Temple image'}
                   loading="lazy"
                   decoding="async"
                   fetchPriority="low"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
             </Card>

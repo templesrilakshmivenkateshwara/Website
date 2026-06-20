@@ -5,7 +5,10 @@ import { sitePath } from "@/lib/utils"
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center spiritual-gradient">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center pt-24 pb-16 md:pt-28 md:pb-20 spiritual-gradient"
+    >
       <MandalaBackground />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -13,7 +16,7 @@ export function HeroSection() {
           <img
             src={sitePath("/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png")}
             alt="Temple Logo"
-            className="h-16 w-auto mx-auto mb-6 drop-shadow"
+            className="h-16 w-auto mx-auto mb-6 drop-shadow rounded-full bg-background/40 p-2"
           />
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 text-balance">
             Sri Lakshmi Venkateshwara Swamy Temple
@@ -25,10 +28,10 @@ export function HeroSection() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button asChild size="lg" className="px-8 py-3 text-lg font-medium">
-            <Link href="/contact">Visit Us Today</Link>
+            <Link href={sitePath("/contact")}>Visit Us Today</Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="px-8 py-3 text-lg font-medium bg-transparent">
-            <Link href="/events">View Events</Link>
+            <Link href={sitePath("/events")}>View Events</Link>
           </Button>
         </div>
 
