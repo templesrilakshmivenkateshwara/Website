@@ -13,7 +13,7 @@ export function HomeGalleryStrip({ lang = 'en' as Locale }: { lang?: Locale }) {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {images.map((img, i) => (
-            <Card key={i} className="overflow-hidden bg-muted/30 py-0 gap-0">
+            <Card key={i} className="overflow-hidden rounded-xl bg-muted/30 py-0 gap-0">
               <ImagePreview
                 src={img.src || '/placeholder.svg'}
                 alt={img.alt || img.title || 'Temple image'}

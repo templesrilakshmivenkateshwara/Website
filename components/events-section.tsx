@@ -17,7 +17,7 @@ export function EventsSection({ lang = 'en' as Locale }: { lang?: Locale }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {events.map((event, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col py-0 gap-0">
+            <Card key={index} className="overflow-hidden rounded-xl hover:shadow-lg transition-shadow duration-300 h-full flex flex-col py-0 gap-0">
               <div className="p-4 pb-0">
                 <ImagePreview
                   src={event.image || "/placeholder.svg"}

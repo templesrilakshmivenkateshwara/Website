@@ -35,7 +35,7 @@ export function ImagePreview({
         type="button"
         onClick={() => setOpen(true)}
         className={cn(
-          "group block w-full text-left focus:outline-none focus:ring-2 focus:ring-primary/60 focus:ring-offset-2 focus:ring-offset-background",
+          "group block w-full text-left cursor-zoom-in focus:outline-none focus:ring-2 focus:ring-primary/60 focus:ring-offset-2 focus:ring-offset-background rounded-xl",
           className,
         )}
         aria-label={title ? `Preview ${title}` : "Preview image"}
@@ -48,14 +48,14 @@ export function ImagePreview({
             previewClassName,
           )}
         >
-          <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-lg">
+          <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-xl">
             <img
               src={src}
               alt={alt}
               loading="lazy"
               decoding="async"
               className={cn(
-                "h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-[1.03]",
+                "h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-[1.04]",
                 imageClassName,
               )}
             />

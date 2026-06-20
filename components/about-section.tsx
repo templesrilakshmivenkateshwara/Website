@@ -28,7 +28,7 @@ export async function AboutSection({ lang = 'en' as Locale }: { lang?: Locale })
               {sec.images.length > 0 && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {sec.images.slice(0, 4).map((src, i) => (
-                    <Card key={i} className="overflow-hidden py-0 gap-0">
+                    <Card key={i} className="overflow-hidden rounded-xl py-0 gap-0">
                       <ImagePreview
                         src={src}
                         alt={sec.title}

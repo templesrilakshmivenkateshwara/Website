@@ -46,17 +46,19 @@ export function DonateSection() {
           {donationOptions.map((option, index) => {
             const IconComponent = option.icon
             return (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
-                <CardHeader>
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
+                <CardHeader className="text-center items-center">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <IconComponent className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle className="text-lg text-foreground">{option.title}</CardTitle>
+                  <CardTitle className="text-lg text-foreground text-center min-h-[3rem] flex items-center justify-center">
+                    {option.title}
+                  </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{option.description}</p>
+                <CardContent className="flex flex-1 flex-col">
+                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed flex-1">{option.description}</p>
                   <p className="text-primary font-semibold mb-4">{option.amount}</p>
-                  <Button variant="outline" className="w-full bg-transparent">
+                  <Button variant="outline" className="w-full bg-transparent mt-auto">
                     Donate Now
                   </Button>
                 </CardContent>

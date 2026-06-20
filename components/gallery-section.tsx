@@ -24,7 +24,7 @@ export function GallerySection({ lang = 'en' as Locale }: { lang?: Locale }) {
           {galleryImages.map((image, index) => (
             <Card
               key={index}
-              className="h-full overflow-hidden border border-border shadow-sm py-0 gap-0"
+              className="h-full overflow-hidden rounded-xl border border-border shadow-sm py-0 gap-0"
             >
               <div className="p-4 pb-0">
                 <ImagePreview
