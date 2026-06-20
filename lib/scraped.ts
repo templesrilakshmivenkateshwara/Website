@@ -1,5 +1,6 @@
 import type { Locale } from '@/lib/i18n'
 import scraped from '@/data/scraped-assets.json'
+import { sitePath } from '@/lib/utils'
 
 // Types that match scraped-assets.json
 interface ScrapedPageEntry {
@@ -34,7 +35,7 @@ export function toPublicPath(imageLocal: string): string {
   // imageLocal is like "images/scraped/events/events-en__...jpg"
   // We copy under Next.js public/ as /scraped/... so strip leading "images/"
   const norm = imageLocal.replace(/\\/g, '/').replace(/^images\//, '')
-  return `/${norm}`
+  return sitePath(`/${norm}`)
 }
 
 function bestEntryForLang(asset: ScrapedAssetMerged, lang: Locale): ScrapedPageEntry | undefined {

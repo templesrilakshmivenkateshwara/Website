@@ -5,12 +5,14 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 import { LanguageSwitch } from "@/components/language-switch"
+import { sitePath, stripSiteBasePath } from "@/lib/utils"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const pathname = usePathname() || "/"
-  const prefix = pathname.startsWith('/kn') ? '/kn' : pathname.startsWith('/hi') ? '/hi' : ''
-  const currentPath = (pathname.replace(/^\/(kn|hi)(?=\/|$)/, '') || '/')
+  const cleanPath = stripSiteBasePath(pathname)
+  const prefix = cleanPath.startsWith('/kn') ? '/kn' : cleanPath.startsWith('/hi') ? '/hi' : ''
+  const currentPath = (cleanPath.replace(/^\/(kn|hi)(?=\/|$)/, '') || '/')
 
   const isHindi = pathname.startsWith('/hi')
   const navItems = [
@@ -27,9 +29,9 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <a href={`${prefix || '/'}`} className="flex items-center space-x-3">
+          <a href={sitePath(`${prefix || '/'}`)} className="flex items-center space-x-3">
             <img
-              src="/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png"
+              src={sitePath("/scraped/home/home__sri-lakshmi-venkateshwara-swamy__01.png")}
               alt="Temple Logo"
               className="h-10 w-auto"
             />
@@ -40,14 +42,14 @@ export function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => {
               const isActive = currentPath === item.href
-              return (
-                <a
-                  key={item.key}
-                  href={`${prefix}${item.href}`}
-                  aria-current={isActive ? 'page' : undefined}
-                  className={`transition-colors duration-200 font-medium px-2 py-1 rounded ${
-                    isActive ? 'bg-primary/15 text-primary' : 'text-muted-foreground hover:text-primary'
-                  }`}
+                return (
+                  <a
+                    key={item.key}
+                    href={sitePath(`${prefix}${item.href}`)}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={`transition-colors duration-200 font-medium px-2 py-1 rounded ${
+                      isActive ? 'bg-primary/15 text-primary' : 'text-muted-foreground hover:text-primary'
+                    }`}
                 >
                   {item.name}
                 </a>
@@ -73,7 +75,7 @@ export function Navigation() {
                 return (
                   <a
                     key={item.key}
-                    href={`${prefix}${item.href}`}
+                    href={sitePath(`${prefix}${item.href}`)}
                     aria-current={isActive ? 'page' : undefined}
                     className={`block px-3 py-2 transition-colors duration-200 font-medium rounded ${
                       isActive ? 'bg-primary/15 text-primary' : 'text-muted-foreground hover:text-primary'

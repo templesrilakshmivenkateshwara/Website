@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Heart, Building, Users, BookOpen } from "lucide-react"
+import { sitePath } from "@/lib/utils"
 
 export function DonateSection() {
   const donationOptions = [
@@ -72,10 +73,10 @@ export function DonateSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="px-8">
-              <a href="/contact">Contact Temple Office</a>
+              <a href={sitePath("/contact")}>Contact Temple Office</a>
             </Button>
             <Button asChild variant="outline" size="lg" className="px-8 bg-transparent">
-              <a href="/events">View Sevas</a>
+              <a href={sitePath("/events")}>View Sevas</a>
             </Button>
           </div>
         </div>
