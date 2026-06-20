@@ -14,6 +14,11 @@ export function LanguageSwitch() {
   if (cleanPath.startsWith('/hi')) current = 'hi'
 
   const locales: Locale[] = ["en", "kn", "hi"]
+  const labels: Record<Locale, string> = {
+    en: "EN",
+    kn: "ಕ",
+    hi: "ह",
+  }
 
   return (
     <div className="flex items-center gap-2">
@@ -24,11 +29,13 @@ export function LanguageSwitch() {
           <a
             key={l}
             href={href}
+            aria-label={l === "kn" ? "Kannada" : l === "hi" ? "Hindi" : "English"}
+            title={l === "kn" ? "Kannada" : l === "hi" ? "Hindi" : "English"}
             className={`px-2 py-1 rounded text-sm transition-colors ${
               active ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-primary"
             }`}
           >
-            {l.toUpperCase()}
+            {labels[l]}
           </a>
         )
       })}

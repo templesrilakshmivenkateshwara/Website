@@ -54,7 +54,6 @@ export function ImagePreview({
           )}
         >
           <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-xl">
-            {!loaded && <div className="absolute inset-0 animate-pulse bg-muted/60" aria-hidden="true" />}
             <img
               src={src}
               alt={alt}
@@ -63,11 +62,11 @@ export function ImagePreview({
               onLoad={() => setLoaded(true)}
               onError={() => setLoaded(true)}
               className={cn(
-                "relative z-10 h-full w-full object-contain transition-all duration-300 ease-out group-hover:scale-[1.04]",
-                loaded ? "opacity-100" : "opacity-0",
+                "relative z-10 h-full w-full object-contain transition-transform duration-300 ease-out group-hover:scale-[1.04]",
                 imageClassName,
               )}
             />
+            {!loaded && <div className="absolute inset-0 animate-pulse bg-muted/60" aria-hidden="true" />}
           </div>
         </div>
       </button>
@@ -79,17 +78,16 @@ export function ImagePreview({
             {description ? <DialogDescription>{description}</DialogDescription> : null}
           </DialogHeader>
           <div className="relative max-h-[80vh] overflow-hidden rounded-xl bg-muted/20 p-3 sm:p-4">
-            {!loaded && <div className="absolute inset-0 animate-pulse bg-muted/40" aria-hidden="true" />}
             <img
               src={src}
               alt={alt}
               onLoad={() => setLoaded(true)}
               onError={() => setLoaded(true)}
               className={cn(
-                "relative z-10 h-full max-h-[76vh] w-full object-contain transition-opacity duration-300",
-                loaded ? "opacity-100" : "opacity-0",
+                "relative z-10 h-full max-h-[76vh] w-full object-contain",
               )}
             />
+            {!loaded && <div className="absolute inset-0 animate-pulse bg-muted/40" aria-hidden="true" />}
           </div>
           {(title || description) && (
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
